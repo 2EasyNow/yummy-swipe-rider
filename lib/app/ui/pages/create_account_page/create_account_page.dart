@@ -1,21 +1,22 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:group_button/group_button.dart';
 import 'package:intelligent_food_delivery/app/utils/input_formatters.dart';
 import '../../../config/app_information.dart';
-import '../../../controllers/core/customer.controller.dart';
+import '../../../controllers/core/rider.controller.dart';
 import '../../../utils/snackbars.dart';
 import '../../global_widgets/global_widgets.dart';
 import '../../global_widgets/timer_button.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/text_theme.dart';
-import '../../../utils/bottom_sheets.dart';
 import '../../../../assets/assets.gen.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 
 import '../../../controllers/create_account_controller.dart';
 import '../../../routes/app_routes.dart';
@@ -44,19 +45,33 @@ class CreateAccountPage extends GetView<CreateAccountController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Icon(
-                    FontAwesomeIcons.burger,
-                    color: AppColors(context).primary,
-                    size: 30.w,
-                  ),
+                // Center(
+                //   child: Icon(
+                //     FontAwesomeIcons.burger,
+                //     color: AppColors(context).primary,
+                //     size: 20.w,
+                //   ),
+                // ),
+                const VerticalSpacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: Icon(
+                        FontAwesomeIcons.burger,
+                        color: AppColors(context).primary,
+                        size: 48,
+                      ),
+                    ),
+                    const HorizontalSpacer(),
+                    Text(
+                      AppInformation.title,
+                      style: AppTextStyle(fontWeight: FontWeight.w800, fontSize: 24.sp),
+                    ),
+                  ],
                 ),
-                Center(
-                  child: Text(
-                    AppInformation.title,
-                    style: AppTextStyle(fontWeight: FontWeight.w800, fontSize: 24.sp),
-                  ),
-                ),
+                const VerticalSpacer(),
+
                 /////////         Name Field         /////////
                 Text('Name', style: AppTextStyle(color: AppColors(context).grey400)),
                 VerticalSpacer(space: 0.5.h),
@@ -107,41 +122,235 @@ class CreateAccountPage extends GetView<CreateAccountController> {
                     ),
                   ),
                 ),
-                /////////         Email Field         /////////
+                /////////         City Field         /////////
                 VerticalSpacer(space: spaceBetweenFields),
-
-                Text('Email', style: AppTextStyle(color: AppColors(context).grey400)),
+                Text('City', style: AppTextStyle(color: AppColors(context).grey400)),
                 VerticalSpacer(space: 0.5.h),
-                TextFormField(
-                  controller: controller.emailController,
-                  autofillHints: const [AutofillHints.email],
+                DropdownSearch<String>(
+                  popupProps: PopupProps.modalBottomSheet(
+                    fit: FlexFit.loose,
+                    searchFieldProps: TextFieldProps(
+                      decoration: InputDecoration(
+                        prefixIcon: Assets.icons.address.svg(color: AppColors(context).grey600).paddingSymmetric(vertical: 12),
+                        hintText: "Search your city",
+                      ),
+                    ),
+                    modalBottomSheetProps: ModalBottomSheetProps(
+                      useRootNavigator: true,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.elliptical(
+                            MediaQuery.of(context).size.width,
+                            50,
+                          ),
+                        ),
+                      ),
+                      isScrollControlled: true,
+                    ),
+                    emptyBuilder: (context, searchEntry) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          VerticalSpacer(space: 4.h),
+                          Assets.images.notFound.image(height: 200),
+                          Text(
+                            "No results found",
+                            style: AppTextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          VerticalSpacer(space: 4.h),
+                        ],
+                      );
+                    },
+                    itemBuilder: (context, item, isSelected) {
+                      // beautiful list tile
+                      return ListTile(
+                        title: Text(
+                          item,
+                          style: AppTextStyle(
+                            fontSize: 16,
+                            fontWeight: isSelected ? FontWeight.w600 : null,
+                          ),
+                        ),
+                        selected: isSelected,
+                        onTap: () {},
+                        minVerticalPadding: 20,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        selectedColor: AppColors(context).onPrimary,
+                        selectedTileColor: AppColors(context).primary,
+                      );
+                    },
+                    containerBuilder: (context, popupWidget) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: popupWidget,
+                      );
+                    },
+                    showSelectedItems: true,
+                    showSearchBox: true,
+                    title: Text(
+                      "Select City",
+                      style: AppTextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ).paddingSymmetric(horizontal: 4),
+                  ),
+                  dropdownButtonProps: DropdownButtonProps(
+                    icon: Assets.icons.arrowDown.svg(
+                      color: AppColors(context).grey600,
+                    ),
+                  ),
+                  dropdownDecoratorProps: DropDownDecoratorProps(
+                    dropdownSearchDecoration: InputDecoration(
+                      prefixIcon: Assets.icons.address.svg(color: AppColors(context).grey600).paddingSymmetric(vertical: 12),
+                      hintText: "Search your city",
+                    ),
+                  ),
+                  items: const ["Gujrat", "Wazirabad", "Gujranwala", 'Kharian', 'Jhelum'],
                   validator: (value) {
-                    if (!GetUtils.isEmail(value!)) return 'Invalid Email';
+                    if (value == null || value.isEmpty) {
+                      return 'Please select your city';
+                    }
                     return null;
                   },
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                    prefixIcon: Assets.icons.message.svg(color: AppColors(context).grey600).paddingSymmetric(vertical: 12),
+                  autoValidateMode: AutovalidateMode.onUserInteraction,
+                  onChanged: (value) {
+                    controller.cityController.text = value ?? '';
+                  },
+                  selectedItem: controller.cityController.text,
+                ),
+                // Text('Email', style: AppTextStyle(color: AppColors(context).grey400)),
+                // VerticalSpacer(space: 0.5.h),
+                // TextFormField(
+                //   controller: controller.emailController,
+                //   autofillHints: const [AutofillHints.email],
+                //   validator: (value) {
+                //     if (!GetUtils.isEmail(value!)) return 'Invalid Email';
+                //     return null;
+                //   },
+                //   autovalidateMode: AutovalidateMode.onUserInteraction,
+                //   decoration: InputDecoration(
+                //     prefixIcon: Assets.icons.message.svg(color: AppColors(context).grey600).paddingSymmetric(vertical: 12),
+                //   ),
+                // ),
+                /////////         Vehicle Type Field         /////////
+                VerticalSpacer(space: spaceBetweenFields),
+                Text(
+                  'Vehicle Type',
+                  style: AppTextStyle(
+                    color: AppColors(context).grey400,
                   ),
                 ),
-                /////////         Email Field         /////////
-                VerticalSpacer(space: spaceBetweenFields),
-
-                Text('Address', style: AppTextStyle(color: AppColors(context).grey400)),
                 VerticalSpacer(space: 0.5.h),
-                TextFormField(
-                  controller: controller.addressController,
-                  autofillHints: const [AutofillHints.postalAddress],
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                DropdownSearch<String>(
+                  popupProps: PopupProps.modalBottomSheet(
+                    fit: FlexFit.loose,
+                    modalBottomSheetProps: ModalBottomSheetProps(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.elliptical(MediaQuery.of(context).size.width, 50),
+                        ),
+                      ),
+                      isScrollControlled: true,
+                    ),
+                    itemBuilder: (context, item, isSelected) {
+                      // beautiful list tile
+                      return ListTile(
+                        title: Text(
+                          item,
+                          style: AppTextStyle(
+                            fontSize: 16,
+                            fontWeight: isSelected ? FontWeight.w600 : null,
+                          ),
+                        ),
+                        selected: isSelected,
+                        onTap: () {},
+                        minVerticalPadding: 20,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        selectedColor: AppColors(context).onPrimary,
+                        selectedTileColor: AppColors(context).primary,
+                      );
+                    },
+                    containerBuilder: (context, popupWidget) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: popupWidget,
+                      );
+                    },
+                    showSelectedItems: true,
+                    title: Text(
+                      "Select Vehicle Type",
+                      style: AppTextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ).paddingSymmetric(horizontal: 4),
+                  ),
+                  dropdownButtonProps: DropdownButtonProps(
+                    icon: Assets.icons.arrowDown.svg(
+                      color: AppColors(context).grey600,
+                    ),
+                  ),
+                  dropdownDecoratorProps: DropDownDecoratorProps(
+                    dropdownSearchDecoration: InputDecoration(
+                      prefixIcon: Assets.icons.car
+                          .svg(
+                            color: AppColors(context).grey600,
+                            height: 24,
+                          )
+                          .paddingSymmetric(vertical: 12),
+                      hintText: "Select vehicle type",
+                    ),
+                  ),
+                  items: const ["Motor Bike", "Car", 'Bicycle'],
+                  onChanged: (value) {
+                    controller.vehicleTypeController.text = value ?? '';
+                  },
+                  autoValidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
-                    if (value!.isEmpty) return 'Address is required';
+                    if (value == null || value.isEmpty) {
+                      return 'Please select vehicle type';
+                    }
                     return null;
                   },
-                  minLines: 1,
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    prefixIcon: Assets.icons.address.svg(color: AppColors(context).grey600).paddingSymmetric(vertical: 12),
-                  ),
+                  selectedItem: controller.vehicleTypeController.text,
+                ),
+                /////////         Age Choice Field         /////////
+                VerticalSpacer(space: spaceBetweenFields),
+                Text('Age', style: AppTextStyle(color: AppColors(context).grey400)),
+                VerticalSpacer(space: 0.5.h),
+                GroupButton(
+                  isRadio: true,
+                  controller: controller.ageController,
+                  onSelected: (value, index, isSelected) {
+                    if (index == 0) {
+                      controller.ageCategory = 'minor';
+                    } else if (index == 1) {
+                      controller.ageCategory = 'adult';
+                    }
+                  },
+                  buttons: const ["Less than 18", "18 or more"],
+                  buttonBuilder: (selected, String value, context) {
+                    return TextButton(
+                      onPressed: null,
+                      style: TextButton.styleFrom(
+                        minimumSize: const Size(150, 50),
+                        backgroundColor: selected ? AppColors(context).primary : AppColors(context).grey100,
+                      ),
+                      child: Text(
+                        value,
+                        style: AppTextStyle(color: Colors.black),
+                      ),
+                    );
+                  },
                 ),
                 VerticalSpacer(space: 0.5.h),
                 Row(
@@ -169,9 +378,9 @@ class CreateAccountPage extends GetView<CreateAccountController> {
                   onPressed: () async {
                     // showLoadingBottomSheet(context, title: 'Creating Account');
                     if (!controller.formKey.currentState!.validate()) return;
-                    final customerController = Get.find<CustomerController>();
+                    final customerController = Get.find<RiderController>();
 
-                    if (await customerController.isCustomerExist(controller.phoneNumber!)) {
+                    if (await customerController.isRiderExist(controller.phoneNumber!)) {
                       if (Get.isBottomSheetOpen!) Get.back();
                       showAppSnackBar('User Already Exists', "Please login");
                       controller.phoneNumberScopeNode.requestFocus();

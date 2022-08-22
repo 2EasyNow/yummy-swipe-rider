@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../../controllers/core/customer.controller.dart';
+import '../../../controllers/core/rider.controller.dart';
 import '../../../routes/app_routes.dart';
 import '../../theme/text_theme.dart';
 import 'package:sizer/sizer.dart';
@@ -23,7 +23,7 @@ class OnBoardingPage extends GetView<OnBoardingController> {
       condition: FirebaseAuth.instance.currentUser != null,
       builder: (context) {
         return FutureBuilder<bool>(
-          future: Get.find<CustomerController>().hasCustomerDocCreated,
+          future: Get.find<RiderController>().hasRiderDocCreated,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Material(

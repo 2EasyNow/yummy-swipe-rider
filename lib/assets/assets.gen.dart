@@ -14,6 +14,9 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ArrowDown.svg
+  SvgGenImage get arrowDown => const SvgGenImage('assets/icons/ArrowDown.svg');
+
   /// File path: assets/icons/Bookmark-filled.svg
   SvgGenImage get bookmarkFilled =>
       const SvgGenImage('assets/icons/Bookmark-filled.svg');
@@ -71,6 +74,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/address.svg
   SvgGenImage get address => const SvgGenImage('assets/icons/address.svg');
+
+  /// File path: assets/icons/car.svg
+  SvgGenImage get car => const SvgGenImage('assets/icons/car.svg');
 
   /// File path: assets/icons/people_group_filled.svg
   SvgGenImage get peopleGroupFilled =>

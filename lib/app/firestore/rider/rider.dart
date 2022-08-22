@@ -3,43 +3,50 @@ import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'customer.g.dart';
+part 'rider.g.dart';
+
+enum RiderAgeCategory {
+  minor,
+  adult,
+}
 
 @JsonSerializable(createFieldMap: true)
-class Customer {
-  Customer({
+class Rider {
+  Rider({
     required this.name,
-    required this.email,
     required this.phone,
-    required this.address,
+    required this.city,
+    required this.vehicleType,
+    required String age,
     this.active = true,
     this.createdAt,
     required this.updatedAt,
   }) {
+    this.age = RiderAgeCategory.values.firstWhere(
+      (category) => category.toString() == age,
+      orElse: () => RiderAgeCategory.adult,
+    );
     // _$assertUsers(this);
   }
 
-  factory Customer.fromJson(Map<String, Object?> json) => _$CustomerFromJson(json);
-  toMap() => _$CustomerToJson(this);
+  factory Rider.fromJson(Map<String, Object?> json) => _$RiderFromJson(json);
+  toMap() => _$RiderToJson(this);
 
   final String name;
-  final String email;
   final String phone;
-  final String address;
-  // final List<String> userNameSearch;
-  // final String role;
+  final String city;
+  final String vehicleType;
+  late final RiderAgeCategory age;
   final bool active;
-  // final bool isVisibilityPublic;
-  // final List<String> groups;
-  // define the converter
   @TimestampConverter()
   final DateTime? createdAt;
   @TimestampConverter()
   final DateTime updatedAt;
 }
 
-@Collection<Customer>('Customer')
-final customerRef = CustomerCollectionReference();
+@Collection<Rider>('Rider')
+final riderRef = RiderCollectionReference();
+
 
 // @Collection<User>('Users')
 // // @Collection<Comment>('Users/*/comments', name: 'comments')

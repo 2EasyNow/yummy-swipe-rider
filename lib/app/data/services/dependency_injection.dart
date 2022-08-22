@@ -1,5 +1,5 @@
 import '../../controllers/core/authentication.controller.dart';
-import '../../controllers/core/customer.controller.dart';
+import '../../controllers/core/rider.controller.dart';
 import '../../ui/theme/theme.dart';
 
 import '../../controllers/navigation_controller.dart';
@@ -12,6 +12,6 @@ class DependecyInjection {
     Get.put<MainController>(MainController());
     Get.put<ThemeController>(ThemeController());
     Get.put<AuthenticationController>(AuthenticationController(), permanent: true);
-    Get.put<CustomerController>(CustomerController(), permanent: true);
+    Get.put<RiderController>(RiderController(), permanent: true);
   }
 }

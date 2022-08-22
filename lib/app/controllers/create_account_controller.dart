@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intelligent_food_delivery/app/controllers/core/customer.controller.dart';
-import '../utils/snackbars.dart';
+import 'package:group_button/group_button.dart';
+import 'package:intelligent_food_delivery/app/controllers/core/rider.controller.dart';
+import 'package:intelligent_food_delivery/app/utils/bottom_sheets.dart';
 import 'core/authentication.controller.dart';
-import 'core/customer.controller.dart';
-import '../firestore/customer/customer.dart';
+import 'core/rider.controller.dart';
+import '../firestore/rider/rider.dart';
 
 enum CreateAccountState {
   info,
@@ -25,11 +26,14 @@ class CreateAccountController extends GetxController {
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final phoneNumberScopeNode = FocusScopeNode();
-  final emailController = TextEditingController();
-  final addressController = TextEditingController();
+  // final emailController = TextEditingController();
+  final cityController = TextEditingController();
+  final ageController = GroupButtonController();
+  final vehicleTypeController = TextEditingController();
+  String ageCategory = '';
 
   String? get phoneNumber {
-    final number = phoneController.text.replaceAll('-', '-');
+    final number = phoneController.text.replaceAll('-', '');
     return '+923$number';
   }
 
@@ -79,16 +83,17 @@ class CreateAccountController extends GetxController {
   }
 
   void saveUserData() async {
-    final customerController = Get.find<CustomerController>();
-    final customer = Customer(
+    final riderController = Get.find<RiderController>();
+    final rider = Rider(
       name: nameController.text,
-      email: emailController.text,
       phone: phoneNumber!,
-      address: addressController.text,
+      city: cityController.text,
+      age: ageCategory,
+      vehicleType: vehicleTypeController.text,
       updatedAt: DateTime.now(),
       createdAt: DateTime.now(),
     );
-    await customerController.createCustomerDoc(customer);
+    await riderController.createCustomerDoc(rider);
     createAccountState.value = CreateAccountState.userCreated;
   }
 }

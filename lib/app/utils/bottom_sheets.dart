@@ -109,3 +109,11 @@ showLoadingBottomSheet(
     enableDrag: enableDrag,
   );
 }
+
+
+hideBottomSheet(){
+  // verify that if a bottom sheet is open
+  if(Get.isBottomSheetOpen!){
+    Get.back();
+  }
+}

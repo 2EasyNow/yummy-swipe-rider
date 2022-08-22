@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'customer.dart';
+part of 'rider.dart';
 
 // **************************************************************************
 // CollectionGenerator
@@ -18,81 +18,81 @@ const _sentinel = _Sentinel();
 /// A collection reference object can be used for adding documents,
 /// getting document references, and querying for documents
 /// (using the methods inherited from Query).
-abstract class CustomerCollectionReference
+abstract class RiderCollectionReference
     implements
-        CustomerQuery,
-        FirestoreCollectionReference<Customer, CustomerQuerySnapshot> {
-  factory CustomerCollectionReference([
+        RiderQuery,
+        FirestoreCollectionReference<Rider, RiderQuerySnapshot> {
+  factory RiderCollectionReference([
     FirebaseFirestore? firestore,
-  ]) = _$CustomerCollectionReference;
+  ]) = _$RiderCollectionReference;
 
-  static Customer fromFirestore(
+  static Rider fromFirestore(
     DocumentSnapshot<Map<String, Object?>> snapshot,
     SnapshotOptions? options,
   ) {
-    return Customer.fromJson(snapshot.data()!);
+    return Rider.fromJson(snapshot.data()!);
   }
 
   static Map<String, Object?> toFirestore(
-    Customer value,
+    Rider value,
     SetOptions? options,
   ) {
-    return _$CustomerToJson(value);
+    return _$RiderToJson(value);
   }
 
   @override
-  CollectionReference<Customer> get reference;
+  CollectionReference<Rider> get reference;
 
   @override
-  CustomerDocumentReference doc([String? id]);
+  RiderDocumentReference doc([String? id]);
 
   /// Add a new document to this collection with the specified data,
   /// assigning it a document ID automatically.
-  Future<CustomerDocumentReference> add(Customer value);
+  Future<RiderDocumentReference> add(Rider value);
 }
 
-class _$CustomerCollectionReference extends _$CustomerQuery
-    implements CustomerCollectionReference {
-  factory _$CustomerCollectionReference([FirebaseFirestore? firestore]) {
+class _$RiderCollectionReference extends _$RiderQuery
+    implements RiderCollectionReference {
+  factory _$RiderCollectionReference([FirebaseFirestore? firestore]) {
     firestore ??= FirebaseFirestore.instance;
 
-    return _$CustomerCollectionReference._(
-      firestore.collection('Customer').withConverter(
-            fromFirestore: CustomerCollectionReference.fromFirestore,
-            toFirestore: CustomerCollectionReference.toFirestore,
+    return _$RiderCollectionReference._(
+      firestore.collection('Rider').withConverter(
+            fromFirestore: RiderCollectionReference.fromFirestore,
+            toFirestore: RiderCollectionReference.toFirestore,
           ),
     );
   }
 
-  _$CustomerCollectionReference._(
-    CollectionReference<Customer> reference,
+  _$RiderCollectionReference._(
+    CollectionReference<Rider> reference,
   ) : super(reference, reference);
 
   String get path => reference.path;
 
   @override
-  CollectionReference<Customer> get reference =>
-      super.reference as CollectionReference<Customer>;
+  CollectionReference<Rider> get reference =>
+      super.reference as CollectionReference<Rider>;
 
   @override
-  CustomerDocumentReference doc([String? id]) {
+  RiderDocumentReference doc([String? id]) {
     assert(
       id == null || id.split('/').length == 1,
       'The document ID cannot be from a different collection',
     );
-    return CustomerDocumentReference(
+    return RiderDocumentReference(
       reference.doc(id),
     );
   }
 
   @override
-  Future<CustomerDocumentReference> add(Customer value) {
-    return reference.add(value).then((ref) => CustomerDocumentReference(ref));
+  Future<RiderDocumentReference> add(Rider value) {
+    return reference.add(value).then((ref) => RiderDocumentReference(ref));
   }
 
   @override
   bool operator ==(Object other) {
-    return other is _$CustomerCollectionReference &&
+    return other is _$RiderCollectionReference &&
         other.runtimeType == runtimeType &&
         other.reference == reference;
   }
@@ -101,57 +101,57 @@ class _$CustomerCollectionReference extends _$CustomerQuery
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
-abstract class CustomerDocumentReference
-    extends FirestoreDocumentReference<Customer, CustomerDocumentSnapshot> {
-  factory CustomerDocumentReference(DocumentReference<Customer> reference) =
-      _$CustomerDocumentReference;
+abstract class RiderDocumentReference
+    extends FirestoreDocumentReference<Rider, RiderDocumentSnapshot> {
+  factory RiderDocumentReference(DocumentReference<Rider> reference) =
+      _$RiderDocumentReference;
 
-  DocumentReference<Customer> get reference;
+  DocumentReference<Rider> get reference;
 
-  /// A reference to the [CustomerCollectionReference] containing this document.
-  CustomerCollectionReference get parent {
-    return _$CustomerCollectionReference(reference.firestore);
+  /// A reference to the [RiderCollectionReference] containing this document.
+  RiderCollectionReference get parent {
+    return _$RiderCollectionReference(reference.firestore);
   }
 
   @override
-  Stream<CustomerDocumentSnapshot> snapshots();
+  Stream<RiderDocumentSnapshot> snapshots();
 
   @override
-  Future<CustomerDocumentSnapshot> get([GetOptions? options]);
+  Future<RiderDocumentSnapshot> get([GetOptions? options]);
 
   @override
   Future<void> delete();
 
   Future<void> update({
     String name,
-    String email,
     String phone,
-    String address,
+    String city,
+    String vehicleType,
     bool active,
     DateTime? createdAt,
     DateTime updatedAt,
   });
 
-  Future<void> set(Customer value);
+  Future<void> set(Rider value);
 }
 
-class _$CustomerDocumentReference
-    extends FirestoreDocumentReference<Customer, CustomerDocumentSnapshot>
-    implements CustomerDocumentReference {
-  _$CustomerDocumentReference(this.reference);
+class _$RiderDocumentReference
+    extends FirestoreDocumentReference<Rider, RiderDocumentSnapshot>
+    implements RiderDocumentReference {
+  _$RiderDocumentReference(this.reference);
 
   @override
-  final DocumentReference<Customer> reference;
+  final DocumentReference<Rider> reference;
 
-  /// A reference to the [CustomerCollectionReference] containing this document.
-  CustomerCollectionReference get parent {
-    return _$CustomerCollectionReference(reference.firestore);
+  /// A reference to the [RiderCollectionReference] containing this document.
+  RiderCollectionReference get parent {
+    return _$RiderCollectionReference(reference.firestore);
   }
 
   @override
-  Stream<CustomerDocumentSnapshot> snapshots() {
+  Stream<RiderDocumentSnapshot> snapshots() {
     return reference.snapshots().map((snapshot) {
-      return CustomerDocumentSnapshot._(
+      return RiderDocumentSnapshot._(
         snapshot,
         snapshot.data(),
       );
@@ -159,9 +159,9 @@ class _$CustomerDocumentReference
   }
 
   @override
-  Future<CustomerDocumentSnapshot> get([GetOptions? options]) {
+  Future<RiderDocumentSnapshot> get([GetOptions? options]) {
     return reference.get(options).then((snapshot) {
-      return CustomerDocumentSnapshot._(
+      return RiderDocumentSnapshot._(
         snapshot,
         snapshot.data(),
       );
@@ -175,18 +175,18 @@ class _$CustomerDocumentReference
 
   Future<void> update({
     Object? name = _sentinel,
-    Object? email = _sentinel,
     Object? phone = _sentinel,
-    Object? address = _sentinel,
+    Object? city = _sentinel,
+    Object? vehicleType = _sentinel,
     Object? active = _sentinel,
     Object? createdAt = _sentinel,
     Object? updatedAt = _sentinel,
   }) async {
     final json = {
       if (name != _sentinel) "name": name as String,
-      if (email != _sentinel) "email": email as String,
       if (phone != _sentinel) "phone": phone as String,
-      if (address != _sentinel) "address": address as String,
+      if (city != _sentinel) "city": city as String,
+      if (vehicleType != _sentinel) "vehicleType": vehicleType as String,
       if (active != _sentinel) "active": active as bool,
       if (createdAt != _sentinel) "createdAt": createdAt as DateTime?,
       if (updatedAt != _sentinel) "updatedAt": updatedAt as DateTime,
@@ -195,13 +195,13 @@ class _$CustomerDocumentReference
     return reference.update(json);
   }
 
-  Future<void> set(Customer value) {
+  Future<void> set(Rider value) {
     return reference.set(value);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is CustomerDocumentReference &&
+    return other is RiderDocumentReference &&
         other.runtimeType == runtimeType &&
         other.parent == parent &&
         other.id == id;
@@ -211,33 +211,32 @@ class _$CustomerDocumentReference
   int get hashCode => Object.hash(runtimeType, parent, id);
 }
 
-class CustomerDocumentSnapshot extends FirestoreDocumentSnapshot<Customer> {
-  CustomerDocumentSnapshot._(
+class RiderDocumentSnapshot extends FirestoreDocumentSnapshot<Rider> {
+  RiderDocumentSnapshot._(
     this.snapshot,
     this.data,
   );
 
   @override
-  final DocumentSnapshot<Customer> snapshot;
+  final DocumentSnapshot<Rider> snapshot;
 
   @override
-  CustomerDocumentReference get reference {
-    return CustomerDocumentReference(
+  RiderDocumentReference get reference {
+    return RiderDocumentReference(
       snapshot.reference,
     );
   }
 
   @override
-  final Customer? data;
+  final Rider? data;
 }
 
-abstract class CustomerQuery
-    implements QueryReference<Customer, CustomerQuerySnapshot> {
+abstract class RiderQuery implements QueryReference<Rider, RiderQuerySnapshot> {
   @override
-  CustomerQuery limit(int limit);
+  RiderQuery limit(int limit);
 
   @override
-  CustomerQuery limitToLast(int limit);
+  RiderQuery limitToLast(int limit);
 
   /// Perform an order query based on a [FieldPath].
   ///
@@ -259,17 +258,17 @@ abstract class CustomerQuery
   /// ```dart
   /// collection.orderByTitle(startAt: 'title');
   /// ```
-  CustomerQuery orderByFieldPath(
+  RiderQuery orderByFieldPath(
     FieldPath fieldPath, {
     bool descending = false,
     Object? startAt,
     Object? startAfter,
     Object? endAt,
     Object? endBefore,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   });
 
   /// Perform a where query based on a [FieldPath].
@@ -289,7 +288,7 @@ abstract class CustomerQuery
   /// ```dart
   /// collection.whereTitle(isEqualTo: 'title');
   /// ```
-  CustomerQuery whereFieldPath(
+  RiderQuery whereFieldPath(
     FieldPath fieldPath, {
     Object? isEqualTo,
     Object? isNotEqualTo,
@@ -304,7 +303,7 @@ abstract class CustomerQuery
     bool? isNull,
   });
 
-  CustomerQuery whereDocumentId({
+  RiderQuery whereDocumentId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -315,7 +314,7 @@ abstract class CustomerQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  CustomerQuery whereName({
+  RiderQuery whereName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -326,7 +325,7 @@ abstract class CustomerQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  CustomerQuery whereEmail({
+  RiderQuery wherePhone({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -337,7 +336,7 @@ abstract class CustomerQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  CustomerQuery wherePhone({
+  RiderQuery whereCity({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -348,7 +347,7 @@ abstract class CustomerQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  CustomerQuery whereAddress({
+  RiderQuery whereVehicleType({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -359,7 +358,7 @@ abstract class CustomerQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  CustomerQuery whereActive({
+  RiderQuery whereActive({
     bool? isEqualTo,
     bool? isNotEqualTo,
     bool? isLessThan,
@@ -370,7 +369,7 @@ abstract class CustomerQuery
     List<bool>? whereIn,
     List<bool>? whereNotIn,
   });
-  CustomerQuery whereCreatedAt({
+  RiderQuery whereCreatedAt({
     DateTime? isEqualTo,
     DateTime? isNotEqualTo,
     DateTime? isLessThan,
@@ -381,7 +380,7 @@ abstract class CustomerQuery
     List<DateTime?>? whereIn,
     List<DateTime?>? whereNotIn,
   });
-  CustomerQuery whereUpdatedAt({
+  RiderQuery whereUpdatedAt({
     DateTime? isEqualTo,
     DateTime? isNotEqualTo,
     DateTime? isLessThan,
@@ -393,106 +392,106 @@ abstract class CustomerQuery
     List<DateTime>? whereNotIn,
   });
 
-  CustomerQuery orderByDocumentId({
+  RiderQuery orderByDocumentId({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   });
 
-  CustomerQuery orderByName({
+  RiderQuery orderByName({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   });
 
-  CustomerQuery orderByEmail({
+  RiderQuery orderByPhone({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   });
 
-  CustomerQuery orderByPhone({
+  RiderQuery orderByCity({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   });
 
-  CustomerQuery orderByAddress({
+  RiderQuery orderByVehicleType({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   });
 
-  CustomerQuery orderByActive({
+  RiderQuery orderByActive({
     bool descending = false,
     bool startAt,
     bool startAfter,
     bool endAt,
     bool endBefore,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   });
 
-  CustomerQuery orderByCreatedAt({
+  RiderQuery orderByCreatedAt({
     bool descending = false,
     DateTime? startAt,
     DateTime? startAfter,
     DateTime? endAt,
     DateTime? endBefore,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   });
 
-  CustomerQuery orderByUpdatedAt({
+  RiderQuery orderByUpdatedAt({
     bool descending = false,
     DateTime startAt,
     DateTime startAfter,
     DateTime endAt,
     DateTime endBefore,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   });
 }
 
-class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
-    implements CustomerQuery {
-  _$CustomerQuery(
+class _$RiderQuery extends QueryReference<Rider, RiderQuerySnapshot>
+    implements RiderQuery {
+  _$RiderQuery(
     this.reference,
     this._collection,
   );
@@ -500,25 +499,25 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
   final CollectionReference<Object?> _collection;
 
   @override
-  final Query<Customer> reference;
+  final Query<Rider> reference;
 
-  CustomerQuerySnapshot _decodeSnapshot(
-    QuerySnapshot<Customer> snapshot,
+  RiderQuerySnapshot _decodeSnapshot(
+    QuerySnapshot<Rider> snapshot,
   ) {
     final docs = snapshot.docs.map((e) {
-      return CustomerQueryDocumentSnapshot._(e, e.data());
+      return RiderQueryDocumentSnapshot._(e, e.data());
     }).toList();
 
     final docChanges = snapshot.docChanges.map((change) {
-      return FirestoreDocumentChange<CustomerDocumentSnapshot>(
+      return FirestoreDocumentChange<RiderDocumentSnapshot>(
         type: change.type,
         oldIndex: change.oldIndex,
         newIndex: change.newIndex,
-        doc: CustomerDocumentSnapshot._(change.doc, change.doc.data()),
+        doc: RiderDocumentSnapshot._(change.doc, change.doc.data()),
       );
     }).toList();
 
-    return CustomerQuerySnapshot._(
+    return RiderQuerySnapshot._(
       snapshot,
       docs,
       docChanges,
@@ -526,42 +525,42 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
   }
 
   @override
-  Stream<CustomerQuerySnapshot> snapshots([SnapshotOptions? options]) {
+  Stream<RiderQuerySnapshot> snapshots([SnapshotOptions? options]) {
     return reference.snapshots().map(_decodeSnapshot);
   }
 
   @override
-  Future<CustomerQuerySnapshot> get([GetOptions? options]) {
+  Future<RiderQuerySnapshot> get([GetOptions? options]) {
     return reference.get(options).then(_decodeSnapshot);
   }
 
   @override
-  CustomerQuery limit(int limit) {
-    return _$CustomerQuery(
+  RiderQuery limit(int limit) {
+    return _$RiderQuery(
       reference.limit(limit),
       _collection,
     );
   }
 
   @override
-  CustomerQuery limitToLast(int limit) {
-    return _$CustomerQuery(
+  RiderQuery limitToLast(int limit) {
+    return _$RiderQuery(
       reference.limitToLast(limit),
       _collection,
     );
   }
 
-  CustomerQuery orderByFieldPath(
+  RiderQuery orderByFieldPath(
     FieldPath fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   }) {
     var query = reference.orderBy(fieldPath, descending: descending);
 
@@ -591,10 +590,10 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
       query = query.endBefore([endBefore]);
     }
 
-    return _$CustomerQuery(query, _collection);
+    return _$RiderQuery(query, _collection);
   }
 
-  CustomerQuery whereFieldPath(
+  RiderQuery whereFieldPath(
     FieldPath fieldPath, {
     Object? isEqualTo,
     Object? isNotEqualTo,
@@ -608,7 +607,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     List<Object?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$CustomerQuery(
+    return _$RiderQuery(
       reference.where(
         fieldPath,
         isEqualTo: isEqualTo,
@@ -627,7 +626,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     );
   }
 
-  CustomerQuery whereDocumentId({
+  RiderQuery whereDocumentId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -638,7 +637,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     List<String>? whereIn,
     List<String>? whereNotIn,
   }) {
-    return _$CustomerQuery(
+    return _$RiderQuery(
       reference.where(
         FieldPath.documentId,
         isEqualTo: isEqualTo,
@@ -655,7 +654,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     );
   }
 
-  CustomerQuery whereName({
+  RiderQuery whereName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -666,9 +665,9 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     List<String>? whereIn,
     List<String>? whereNotIn,
   }) {
-    return _$CustomerQuery(
+    return _$RiderQuery(
       reference.where(
-        _$CustomerFieldMap["name"]!,
+        _$RiderFieldMap["name"]!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -683,7 +682,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     );
   }
 
-  CustomerQuery whereEmail({
+  RiderQuery wherePhone({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -694,9 +693,9 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     List<String>? whereIn,
     List<String>? whereNotIn,
   }) {
-    return _$CustomerQuery(
+    return _$RiderQuery(
       reference.where(
-        _$CustomerFieldMap["email"]!,
+        _$RiderFieldMap["phone"]!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -711,7 +710,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     );
   }
 
-  CustomerQuery wherePhone({
+  RiderQuery whereCity({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -722,9 +721,9 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     List<String>? whereIn,
     List<String>? whereNotIn,
   }) {
-    return _$CustomerQuery(
+    return _$RiderQuery(
       reference.where(
-        _$CustomerFieldMap["phone"]!,
+        _$RiderFieldMap["city"]!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -739,7 +738,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     );
   }
 
-  CustomerQuery whereAddress({
+  RiderQuery whereVehicleType({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -750,9 +749,9 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     List<String>? whereIn,
     List<String>? whereNotIn,
   }) {
-    return _$CustomerQuery(
+    return _$RiderQuery(
       reference.where(
-        _$CustomerFieldMap["address"]!,
+        _$RiderFieldMap["vehicleType"]!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -767,7 +766,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     );
   }
 
-  CustomerQuery whereActive({
+  RiderQuery whereActive({
     bool? isEqualTo,
     bool? isNotEqualTo,
     bool? isLessThan,
@@ -778,9 +777,9 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     List<bool>? whereIn,
     List<bool>? whereNotIn,
   }) {
-    return _$CustomerQuery(
+    return _$RiderQuery(
       reference.where(
-        _$CustomerFieldMap["active"]!,
+        _$RiderFieldMap["active"]!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -795,7 +794,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     );
   }
 
-  CustomerQuery whereCreatedAt({
+  RiderQuery whereCreatedAt({
     DateTime? isEqualTo,
     DateTime? isNotEqualTo,
     DateTime? isLessThan,
@@ -806,9 +805,9 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     List<DateTime?>? whereIn,
     List<DateTime?>? whereNotIn,
   }) {
-    return _$CustomerQuery(
+    return _$RiderQuery(
       reference.where(
-        _$CustomerFieldMap["createdAt"]!,
+        _$RiderFieldMap["createdAt"]!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -823,7 +822,7 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     );
   }
 
-  CustomerQuery whereUpdatedAt({
+  RiderQuery whereUpdatedAt({
     DateTime? isEqualTo,
     DateTime? isNotEqualTo,
     DateTime? isLessThan,
@@ -834,9 +833,9 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     List<DateTime>? whereIn,
     List<DateTime>? whereNotIn,
   }) {
-    return _$CustomerQuery(
+    return _$RiderQuery(
       reference.where(
-        _$CustomerFieldMap["updatedAt"]!,
+        _$RiderFieldMap["updatedAt"]!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -851,16 +850,16 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
     );
   }
 
-  CustomerQuery orderByDocumentId({
+  RiderQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   }) {
     var query = reference.orderBy(FieldPath.documentId, descending: descending);
 
@@ -890,22 +889,22 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
       query = query.endBefore([endBefore]);
     }
 
-    return _$CustomerQuery(query, _collection);
+    return _$RiderQuery(query, _collection);
   }
 
-  CustomerQuery orderByName({
+  RiderQuery orderByName({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   }) {
     var query =
-        reference.orderBy(_$CustomerFieldMap["name"]!, descending: descending);
+        reference.orderBy(_$RiderFieldMap["name"]!, descending: descending);
 
     if (startAtDocument != null) {
       query = query.startAtDocument(startAtDocument.snapshot);
@@ -933,22 +932,22 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
       query = query.endBefore([endBefore]);
     }
 
-    return _$CustomerQuery(query, _collection);
+    return _$RiderQuery(query, _collection);
   }
 
-  CustomerQuery orderByEmail({
+  RiderQuery orderByPhone({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   }) {
     var query =
-        reference.orderBy(_$CustomerFieldMap["email"]!, descending: descending);
+        reference.orderBy(_$RiderFieldMap["phone"]!, descending: descending);
 
     if (startAtDocument != null) {
       query = query.startAtDocument(startAtDocument.snapshot);
@@ -976,22 +975,22 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
       query = query.endBefore([endBefore]);
     }
 
-    return _$CustomerQuery(query, _collection);
+    return _$RiderQuery(query, _collection);
   }
 
-  CustomerQuery orderByPhone({
+  RiderQuery orderByCity({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   }) {
     var query =
-        reference.orderBy(_$CustomerFieldMap["phone"]!, descending: descending);
+        reference.orderBy(_$RiderFieldMap["city"]!, descending: descending);
 
     if (startAtDocument != null) {
       query = query.startAtDocument(startAtDocument.snapshot);
@@ -1019,21 +1018,21 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
       query = query.endBefore([endBefore]);
     }
 
-    return _$CustomerQuery(query, _collection);
+    return _$RiderQuery(query, _collection);
   }
 
-  CustomerQuery orderByAddress({
+  RiderQuery orderByVehicleType({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   }) {
-    var query = reference.orderBy(_$CustomerFieldMap["address"]!,
+    var query = reference.orderBy(_$RiderFieldMap["vehicleType"]!,
         descending: descending);
 
     if (startAtDocument != null) {
@@ -1062,21 +1061,64 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
       query = query.endBefore([endBefore]);
     }
 
-    return _$CustomerQuery(query, _collection);
+    return _$RiderQuery(query, _collection);
   }
 
-  CustomerQuery orderByActive({
+  RiderQuery orderByActive({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   }) {
-    var query = reference.orderBy(_$CustomerFieldMap["active"]!,
+    var query =
+        reference.orderBy(_$RiderFieldMap["active"]!, descending: descending);
+
+    if (startAtDocument != null) {
+      query = query.startAtDocument(startAtDocument.snapshot);
+    }
+    if (startAfterDocument != null) {
+      query = query.startAfterDocument(startAfterDocument.snapshot);
+    }
+    if (endAtDocument != null) {
+      query = query.endAtDocument(endAtDocument.snapshot);
+    }
+    if (endBeforeDocument != null) {
+      query = query.endBeforeDocument(endBeforeDocument.snapshot);
+    }
+
+    if (startAt != _sentinel) {
+      query = query.startAt([startAt]);
+    }
+    if (startAfter != _sentinel) {
+      query = query.startAfter([startAfter]);
+    }
+    if (endAt != _sentinel) {
+      query = query.endAt([endAt]);
+    }
+    if (endBefore != _sentinel) {
+      query = query.endBefore([endBefore]);
+    }
+
+    return _$RiderQuery(query, _collection);
+  }
+
+  RiderQuery orderByCreatedAt({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
+  }) {
+    var query = reference.orderBy(_$RiderFieldMap["createdAt"]!,
         descending: descending);
 
     if (startAtDocument != null) {
@@ -1105,21 +1147,21 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
       query = query.endBefore([endBefore]);
     }
 
-    return _$CustomerQuery(query, _collection);
+    return _$RiderQuery(query, _collection);
   }
 
-  CustomerQuery orderByCreatedAt({
+  RiderQuery orderByUpdatedAt({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
+    RiderDocumentSnapshot? startAtDocument,
+    RiderDocumentSnapshot? endAtDocument,
+    RiderDocumentSnapshot? endBeforeDocument,
+    RiderDocumentSnapshot? startAfterDocument,
   }) {
-    var query = reference.orderBy(_$CustomerFieldMap["createdAt"]!,
+    var query = reference.orderBy(_$RiderFieldMap["updatedAt"]!,
         descending: descending);
 
     if (startAtDocument != null) {
@@ -1148,55 +1190,12 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
       query = query.endBefore([endBefore]);
     }
 
-    return _$CustomerQuery(query, _collection);
-  }
-
-  CustomerQuery orderByUpdatedAt({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    CustomerDocumentSnapshot? startAtDocument,
-    CustomerDocumentSnapshot? endAtDocument,
-    CustomerDocumentSnapshot? endBeforeDocument,
-    CustomerDocumentSnapshot? startAfterDocument,
-  }) {
-    var query = reference.orderBy(_$CustomerFieldMap["updatedAt"]!,
-        descending: descending);
-
-    if (startAtDocument != null) {
-      query = query.startAtDocument(startAtDocument.snapshot);
-    }
-    if (startAfterDocument != null) {
-      query = query.startAfterDocument(startAfterDocument.snapshot);
-    }
-    if (endAtDocument != null) {
-      query = query.endAtDocument(endAtDocument.snapshot);
-    }
-    if (endBeforeDocument != null) {
-      query = query.endBeforeDocument(endBeforeDocument.snapshot);
-    }
-
-    if (startAt != _sentinel) {
-      query = query.startAt([startAt]);
-    }
-    if (startAfter != _sentinel) {
-      query = query.startAfter([startAfter]);
-    }
-    if (endAt != _sentinel) {
-      query = query.endAt([endAt]);
-    }
-    if (endBefore != _sentinel) {
-      query = query.endBefore([endBefore]);
-    }
-
-    return _$CustomerQuery(query, _collection);
+    return _$RiderQuery(query, _collection);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is _$CustomerQuery &&
+    return other is _$RiderQuery &&
         other.runtimeType == runtimeType &&
         other.reference == reference;
   }
@@ -1205,49 +1204,49 @@ class _$CustomerQuery extends QueryReference<Customer, CustomerQuerySnapshot>
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
-class CustomerQuerySnapshot
-    extends FirestoreQuerySnapshot<Customer, CustomerQueryDocumentSnapshot> {
-  CustomerQuerySnapshot._(
+class RiderQuerySnapshot
+    extends FirestoreQuerySnapshot<Rider, RiderQueryDocumentSnapshot> {
+  RiderQuerySnapshot._(
     this.snapshot,
     this.docs,
     this.docChanges,
   );
 
-  final QuerySnapshot<Customer> snapshot;
+  final QuerySnapshot<Rider> snapshot;
 
   @override
-  final List<CustomerQueryDocumentSnapshot> docs;
+  final List<RiderQueryDocumentSnapshot> docs;
 
   @override
-  final List<FirestoreDocumentChange<CustomerDocumentSnapshot>> docChanges;
+  final List<FirestoreDocumentChange<RiderDocumentSnapshot>> docChanges;
 }
 
-class CustomerQueryDocumentSnapshot
-    extends FirestoreQueryDocumentSnapshot<Customer>
-    implements CustomerDocumentSnapshot {
-  CustomerQueryDocumentSnapshot._(this.snapshot, this.data);
+class RiderQueryDocumentSnapshot extends FirestoreQueryDocumentSnapshot<Rider>
+    implements RiderDocumentSnapshot {
+  RiderQueryDocumentSnapshot._(this.snapshot, this.data);
 
   @override
-  final QueryDocumentSnapshot<Customer> snapshot;
+  final QueryDocumentSnapshot<Rider> snapshot;
 
   @override
-  CustomerDocumentReference get reference {
-    return CustomerDocumentReference(snapshot.reference);
+  RiderDocumentReference get reference {
+    return RiderDocumentReference(snapshot.reference);
   }
 
   @override
-  final Customer data;
+  final Rider data;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
+Rider _$RiderFromJson(Map<String, dynamic> json) => Rider(
       name: json['name'] as String,
-      email: json['email'] as String,
       phone: json['phone'] as String,
-      address: json['address'] as String,
+      city: json['city'] as String,
+      vehicleType: json['vehicleType'] as String,
+      age: json['age'] as String,
       active: json['active'] as bool? ?? true,
       createdAt: _$JsonConverterFromJson<Timestamp, DateTime>(
           json['createdAt'], const TimestampConverter().fromJson),
@@ -1255,21 +1254,23 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
           const TimestampConverter().fromJson(json['updatedAt'] as Timestamp),
     );
 
-const _$CustomerFieldMap = <String, String>{
+const _$RiderFieldMap = <String, String>{
   'name': 'name',
-  'email': 'email',
   'phone': 'phone',
-  'address': 'address',
+  'city': 'city',
+  'vehicleType': 'vehicleType',
+  'age': 'age',
   'active': 'active',
   'createdAt': 'createdAt',
   'updatedAt': 'updatedAt',
 };
 
-Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
+Map<String, dynamic> _$RiderToJson(Rider instance) => <String, dynamic>{
       'name': instance.name,
-      'email': instance.email,
       'phone': instance.phone,
-      'address': instance.address,
+      'city': instance.city,
+      'vehicleType': instance.vehicleType,
+      'age': _$RiderAgeCategoryEnumMap[instance.age]!,
       'active': instance.active,
       'createdAt': _$JsonConverterToJson<Timestamp, DateTime>(
           instance.createdAt, const TimestampConverter().toJson),
@@ -1281,6 +1282,11 @@ Value? _$JsonConverterFromJson<Json, Value>(
   Value? Function(Json json) fromJson,
 ) =>
     json == null ? null : fromJson(json as Json);
+
+const _$RiderAgeCategoryEnumMap = {
+  RiderAgeCategory.minor: 'minor',
+  RiderAgeCategory.adult: 'adult',
+};
 
 Json? _$JsonConverterToJson<Json, Value>(
   Value? value,
