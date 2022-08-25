@@ -74,7 +74,7 @@ class OnBoardingPage extends GetView<OnBoardingController> {
                       padding: const EdgeInsets.only(bottom: 20),
                       child: _PageViewIndicators(
                         activeIndex: logic.currentPage,
-                        totalPages: 2,
+                        totalPages: controller.totalPages,
                         indicatorColor: AppColors(context).primary,
                       ),
                     ),
@@ -108,26 +108,29 @@ class _BackAndNextButtons extends GetView<OnBoardingController> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        OutlinedButton(
-          onPressed: controller.goToGettingStartedPage,
-          style: OutlinedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            minimumSize: const Size(120, 60),
-            primary: Colors.grey.shade600,
-            side: BorderSide(
-              color: Colors.grey.shade600,
-              width: 2,
+        Visibility(
+          visible: false,
+          child: OutlinedButton(
+            onPressed: controller.goToGettingStartedPage,
+            style: OutlinedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              minimumSize: const Size(120, 60),
+              primary: Colors.grey.shade600,
+              side: BorderSide(
+                color: Colors.grey.shade600,
+                width: 2,
+              ),
+              // shape: const RoundedRectangleBorder(
+              //   borderRadius: BorderRadius.horizontal(
+              //     right: Radius.circular(999),
+              //   ),
+              // ),
             ),
-            // shape: const RoundedRectangleBorder(
-            //   borderRadius: BorderRadius.horizontal(
-            //     right: Radius.circular(999),
-            //   ),
-            // ),
-          ),
-          child: Text(
-            "SKIP",
-            style: TextStyle(
-              color: Colors.grey.shade700,
+            child: Text(
+              "SKIP",
+              style: TextStyle(
+                color: Colors.grey.shade700,
+              ),
             ),
           ),
         ),

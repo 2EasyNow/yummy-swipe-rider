@@ -123,6 +123,9 @@ class $AssetsImagesGen {
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/bike.svg
+  SvgGenImage get bike => const SvgGenImage('assets/svg/bike.svg');
+
   /// File path: assets/svg/burger.svg
   SvgGenImage get burger => const SvgGenImage('assets/svg/burger.svg');
 
