@@ -48,6 +48,9 @@ class $AssetsIconsGen {
   SvgGenImage get infoSquare =>
       const SvgGenImage('assets/icons/Info Square.svg');
 
+  /// File path: assets/icons/Location.svg
+  SvgGenImage get location => const SvgGenImage('assets/icons/Location.svg');
+
   /// File path: assets/icons/Logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/icons/Logout.svg');
 
@@ -78,6 +81,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/car.svg
   SvgGenImage get car => const SvgGenImage('assets/icons/car.svg');
 
+  /// File path: assets/icons/fork-knife.svg
+  SvgGenImage get forkKnife => const SvgGenImage('assets/icons/fork-knife.svg');
+
   /// File path: assets/icons/people_group_filled.svg
   SvgGenImage get peopleGroupFilled =>
       const SvgGenImage('assets/icons/people_group_filled.svg');
@@ -101,12 +107,21 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/burger.png
+  AssetGenImage get burger => const AssetGenImage('assets/images/burger.png');
+
+  /// File path: assets/images/deal.png
+  AssetGenImage get deal => const AssetGenImage('assets/images/deal.png');
+
   /// File path: assets/images/google_icon.png
   AssetGenImage get googleIcon =>
       const AssetGenImage('assets/images/google_icon.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/logout.png
+  AssetGenImage get logout => const AssetGenImage('assets/images/logout.png');
 
   /// File path: assets/images/no-members-found.png
   AssetGenImage get noMembersFound =>
@@ -128,6 +143,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/burger.svg
   SvgGenImage get burger => const SvgGenImage('assets/svg/burger.svg');
+
+  /// File path: assets/svg/chef.svg
+  SvgGenImage get chef => const SvgGenImage('assets/svg/chef.svg');
 
   /// File path: assets/svg/delivery_boy.svg
   SvgGenImage get deliveryBoy =>

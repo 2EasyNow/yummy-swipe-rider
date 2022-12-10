@@ -40,6 +40,7 @@ class LoginController extends GetxController {
       phoneNumber!,
       onCompleteVerification: () {
         loginState.value = LoginAccountState.loggedIn;
+        riderController.listenToCustomerDoc();
       },
       onCodeSent: (verificationId, forceResendingToken) {
         _verificationId = verificationId;
@@ -52,10 +53,13 @@ class LoginController extends GetxController {
   onVerifyCode() async {
     loginState.value = LoginAccountState.codeVerification;
     final authController = Get.find<AuthenticationController>();
+    final riderController = Get.find<RiderController>();
+
     try {
       // createAccountState.value = CreateAccountState.codeVerifying;
       await authController.verifyCode(smsCodeController.text, _verificationId!);
       loginState.value = LoginAccountState.loggedIn;
+      riderController.listenToCustomerDoc();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-verification-code') {
         loginState.value = LoginAccountState.invalidCode;

@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 class DependecyInjection {
   static void init() {
     Get.put<NavigationController>(NavigationController());
-    Get.put<MainController>(MainController());
+    Get.put<MainController>(MainController(), permanent: true);
     Get.put<ThemeController>(ThemeController());
     Get.put<AuthenticationController>(AuthenticationController(), permanent: true);
     Get.put<RiderController>(RiderController(), permanent: true);
