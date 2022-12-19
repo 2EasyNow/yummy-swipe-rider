@@ -10,4 +10,5 @@ class AppRoutes {
   static const ON_BOARDING = '/on-boarding';
   static const LOGIN = '/login';
   static const CREATE_ACCOUNT = '/create-account';
+  static const ACTIVE_ORDER = '/active-order';
 }

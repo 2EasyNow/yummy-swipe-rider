@@ -9,6 +9,8 @@
         android:label="Yummy Swipe - Rider"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCbWKk9loepkI0FMr3b5DKuBd7eijHTgAU"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

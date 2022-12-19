@@ -3,9 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:intelligent_food_delivery/app/controllers/core/authentication.controller.dart';
-import 'package:intelligent_food_delivery/app/controllers/core/rider.controller.dart';
+import 'package:intelligent_food_delivery/app/routes/app_routes.dart';
 import 'package:intelligent_food_delivery/app/ui/global_widgets/global_widgets.dart';
-import 'package:intelligent_food_delivery/app/ui/theme/app_colors.dart';
 import 'package:intelligent_food_delivery/app/ui/theme/text_theme.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../assets/assets.gen.dart';
@@ -17,17 +16,7 @@ class HomePage extends GetView<HomeController> {
     _NavigationCardsModel(
       title: 'Active Order',
       image: Assets.images.burger.path,
-      onTap: () {},
-    ),
-    _NavigationCardsModel(
-      title: 'Category',
-      image: Assets.images.deal.path,
-      onTap: () {},
-    ),
-    _NavigationCardsModel(
-      title: 'Profile',
-      image: Assets.images.profile.path,
-      onTap: () {},
+      onTap: () => Get.toNamed(AppRoutes.ACTIVE_ORDER),
     ),
     _NavigationCardsModel(
       title: 'Orders',
@@ -42,6 +31,7 @@ class HomePage extends GetView<HomeController> {
       },
     )
   ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

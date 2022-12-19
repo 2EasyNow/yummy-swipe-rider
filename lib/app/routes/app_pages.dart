@@ -1,4 +1,6 @@
-import 'package:get/get.dart';
+import '../bindings/active_order_binding.dart';
+import '../ui/pages/active_order_page/active_order_page.dart';
+      import 'package:get/get.dart';
 import '../bindings/create_account_binding.dart';
 import '../bindings/getting_started_binding.dart';
 import '../bindings/home_binding.dart';
@@ -83,5 +85,11 @@ class AppPages {
       binding: CreateAccountBinding(),
       transition: Transition.rightToLeft,
     ),
-  ];
+    GetPage(
+      name: AppRoutes.ACTIVE_ORDER,
+      page: () => ActiveOrderPage(),
+      binding: ActiveOrderBinding(),
+      transition: _defaultTransition,
+    ), 
+];
 }

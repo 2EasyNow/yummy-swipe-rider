@@ -51,6 +51,8 @@ dependencies:
     git:
       url: https://github.com/Hisham-Tariq/GeoFlutterFire2.git
   dio: ^4.0.6
+  geocoding: ^2.0.5
+  flutter_polyline_points: ^1.0.0
 
 dev_dependencies:
   flutter_test:
